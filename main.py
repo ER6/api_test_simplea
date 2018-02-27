@@ -14,8 +14,17 @@ class TestCore (unittest.TestCase):
     base_url = 'https://api.github.com/repos/' + owner + repo
 
     def get_list_of_pull_requsts(self):
-        response_obj = requests.get(self.base_url+'pulls')
-        list_of_pull_request = response_obj.json()
+        response_obj_page1 = requests.get(self.base_url + 'pulls?page=1')
+        response_obj_page2 = requests.get(self.base_url + 'pulls?page=2')
+        response_obj_page3 = requests.get(self.base_url + 'pulls?page=3')
+        response_obj_page4 = requests.get(self.base_url + 'pulls?page=4')
+        response_obj_page5 = requests.get(self.base_url + 'pulls?page=5')
+        list_of_pull_request_page1 = response_obj_page1.json()
+        list_of_pull_request_page2 = response_obj_page2.json()
+        list_of_pull_request_page3 = response_obj_page3.json()
+        list_of_pull_request_page4 = response_obj_page4.json()
+        list_of_pull_request_page5 = response_obj_page5.json()
+        list_of_pull_request = list_of_pull_request_page1+list_of_pull_request_page2+list_of_pull_request_page3+list_of_pull_request_page4+list_of_pull_request_page5
         return list_of_pull_request
 
     def get_pull_request_numbers(self):

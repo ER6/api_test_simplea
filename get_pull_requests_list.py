@@ -4,14 +4,17 @@ from main import TestCore
 
 test_parameters = {
     "state": ['closed', 'open', 'all'],
-    "head": ['sergeypyrkin:master', 'smassy:comma', 'Wasapon7763:patch-1'], # didn't work for user akhileswar
+    "head": ['sergeypyrkin:master', 'smassy:comma', 'Wasapon7763:patch-1'],  # didn't work for user akhileswar
     "base": ['test', 'master', 'patch-3'],
     "sort": ['created', 'updated', 'popularity', 'long-running'],
     "direction": ['asc', 'desc']
 }
 
+
 class GetPullRequestList(TestCore):
-    url = TestCore.base_url + 'pulls'
+    url = '{base_url}pulls'.format(
+        base_url=TestCore.base_url
+    )
 
     @parameterized.expand(test_parameters["state"])
     def test_state_parameter(self, state):
