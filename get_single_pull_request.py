@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import time
 import requests
 from main import TestCore
@@ -17,7 +18,6 @@ class GetSinglePullRequest(TestCore):
             mergeable_status = json_resp["mergeable"]
             if mergeable_status != 'null':
                 assert type(json_resp['mergeable']) is bool, '%s != True or False, Incorrect type!' % type(json_resp['mergeable'])
-                merge_status = json_resp[]
             else:
                 time.sleep(0.05)  # 50ms
         else:

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 from nose_parameterized import parameterized
 from main import TestCore
