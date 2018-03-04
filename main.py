@@ -14,11 +14,19 @@ class TestCore (unittest.TestCase):
         repo='Hello-World'
     )
 
+    def paginator(self, url, pages=int):
+        list_of_responces = []
+        for i in range(1, pages+1):
+            response = requests.get(url + '?page=%s' % i).json()
+            if len(response) == 0:
+                break
+            else:
+                list_of_responces += response
+        return list_of_responces
+
     def get_list_of_pull_requsts(self):
-        response_obj_page = [(requests.get(self.base_url + 'pulls?page=%s' % i)) for i in range(1, 6)]
-        list_of_pull_request = []
-        for i in range(5):
-            list_of_pull_request += response_obj_page[i].json()
+        pull_request_url = "%spulls" % self.base_url
+        list_of_pull_request = self.paginator(pull_request_url, 5)
         return list_of_pull_request
 
     def get_pull_request_numbers(self):
