@@ -1,6 +1,6 @@
 from main import TestCore
 
-class Test(TestCore):
+class TestResponce(TestCore):
     full_list_of_pr =[
   {
 "url": "https://api.github.com/repos/octocat/Hello-World/pulls/394",

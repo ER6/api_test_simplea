@@ -20,7 +20,7 @@ class CreatePullRequest(TestCore):
 
     @parameterized.expand([data["one way"], data["second way"]])
     def test_create_PR(self, form):
-        url = '{base_url}pulls?{access_token}'.format(
+        url = '{base_url}/pulls?{access_token}'.format(
             base_url = self.base_url,
             access_token=self.access_token
         )
